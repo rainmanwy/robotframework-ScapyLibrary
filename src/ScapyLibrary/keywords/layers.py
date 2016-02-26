@@ -50,7 +50,9 @@ class LayersWrapper(object):
         return newPacket
 
     def log_packets(self, *packets):
-        '''Show packet content with nice format
+        '''Show packets content with nice format
+
+        It is a wrapper of scap packet "show" method
         '''
         index = 0
         for packet in packets:
@@ -81,7 +83,3 @@ class LayersWrapper(object):
 if __name__ == '__main__':
     l = LayersWrapper()
     l.ARP().show()
-    # for key in l.layers:
-    #     print '-'*30
-    #     print '%s:' % key
-    #     print l.layers[key].__doc__

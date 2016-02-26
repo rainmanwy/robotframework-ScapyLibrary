@@ -4,7 +4,7 @@ Created on 2016/2/23
 Author: by wang_yang1980@hotmail.com
 '''
 
-from ScapyLibrary.keywords._layers import LayersWrapper
+from ScapyLibrary.keywords.layers import LayersWrapper
 from .version import __version__
 
 class ScapyLibrary(LayersWrapper):
