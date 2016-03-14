@@ -18,7 +18,13 @@ class LayersWrapper(object):
     def __getattr__(self, name):
 
         def _f(self, **kwargs):
-            p = self.layers[name](**kwargs)
+            newKwargs = {}
+            for key in kwargs:
+                if isinstance(kwargs[key], basestring):
+                    newKwargs[key] = str(kwargs[key])
+                else:
+                    newKwargs[key] = kwargs[key]
+            p = self.layers[name](**newKwargs)
             return p
         try:
             if name in self.layers:
@@ -53,6 +59,9 @@ class LayersWrapper(object):
         '''Show packets content with nice format
 
         It is a wrapper of scap packet "show" method
+        Example:
+        |   ${ip}            |   IP            |  dst=10.1.1.1  |
+        |   Log Packets      |   ${ip}         |
         '''
         index = 0
         for packet in packets:
@@ -64,10 +73,6 @@ class LayersWrapper(object):
         return self.layers.keys() + LayersWrapper.OTHER_KEYWORDS
 
     def _init_layers(self):
-
-        def _f(**kwargs):
-            return self.layers[__name__](**kwargs)
-
         for protocol in scapylib.conf.layers:
             protocolName = protocol.__name__
             if protocol.name is None:
