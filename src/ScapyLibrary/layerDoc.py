@@ -94,7 +94,10 @@ def generate_scapy_layer_doc(docFile):
     for protocol in scapylib.conf.layers:
         protocolDoc += PROTOCOL_TEMPLATE % (protocol.__name__, protocol.name)
         for f in protocol.fields_desc:
-            protocolDoc += FIELD_TEMPLATE % ('', f.name)
+            if hasattr(f, 'default'):
+                protocolDoc += FIELD_TEMPLATE % ('', '<b>%s</b>:&nbsp;&nbsp;&nbsp;&nbsp;Default value is %s' % (f.name, str(f.default)))
+            else:
+                protocolDoc += FIELD_TEMPLATE % ('', f.name)
 
     protocolDoc = re.sub('\$\{(.*?)\}', lambda x: "%s" % protocolDoc, SCAPY_PROTOCOL_TEMPLATE)
 

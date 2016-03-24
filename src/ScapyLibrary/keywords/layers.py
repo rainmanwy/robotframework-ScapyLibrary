@@ -80,7 +80,12 @@ class LayersWrapper(object):
             else:
                 doc = protocol.name + '\n\n'
             for field in protocol.fields_desc:
-                doc += '@%s:    %s\n\n' % (field.name, field.__class__.__name__)
+                if hasattr(field, 'default'):
+                    doc += '@%s:    %s. Default value is %s\n\n' % (field.name,
+                                                                    field.__class__.__name__,
+                                                                    str(field.default))
+                else:
+                    doc += '@%s:    %s\n\n' % (field.name, field.__class__.__name__)
             protocol.__doc__ = doc
             self.layers[protocolName] = protocol
 
