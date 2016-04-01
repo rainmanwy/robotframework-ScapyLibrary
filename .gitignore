@@ -2,4 +2,5 @@
 *.pyc
 build
 dist
+MANIFEST
 *.iml
