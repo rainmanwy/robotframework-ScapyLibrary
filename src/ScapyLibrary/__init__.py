@@ -5,10 +5,11 @@ Author: by wang_yang1980@hotmail.com
 '''
 
 from ScapyLibrary.keywords.layers import LayersWrapper
-from ScapyLibrary.keywords.sendrecv import L3SendRecv
+from ScapyLibrary.keywords.sendrecv import SendRecv
+from ScapyLibrary.keywords.pcap import PcapFile
 from .version import __version__
 
-class ScapyLibrary(L3SendRecv, LayersWrapper):
+class ScapyLibrary(SendRecv, LayersWrapper, PcapFile):
 
     ROBOT_LIBRARY_VERSION = __version__
     ROBOT_LIBRARY_SCOPE = 'global'

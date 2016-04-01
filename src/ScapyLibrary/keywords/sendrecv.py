@@ -7,7 +7,7 @@ Author: by wang_yang1980@hotmail.com
 from ScapyLibrary.utils.baseclass import _BaseClass
 from ScapyLibrary.utils._scapy import scapylib
 
-class L3SendRecv(_BaseClass):
+class SendRecv(_BaseClass):
 
     def send_and_receive_at_layer3(self, packet, return_answer=True,
                                     return_unanswer=False, return_send=False, *args, **kwargs):
