@@ -5,14 +5,22 @@ Author: by wang_yang1980@hotmail.com
 '''
 
 from ScapyLibrary.keywords.layers import LayersWrapper
+from ScapyLibrary.keywords.scapyfunctions import ScapyFunctionWrapper
 from ScapyLibrary.keywords.sendrecv import SendRecv
 from ScapyLibrary.keywords.pcap import PcapFile
 from .version import __version__
 
-class ScapyLibrary(SendRecv, LayersWrapper, PcapFile):
+class ScapyLibrary(SendRecv, ScapyFunctionWrapper, LayersWrapper, PcapFile):
 
     ROBOT_LIBRARY_VERSION = __version__
     ROBOT_LIBRARY_SCOPE = 'global'
+
+    def __init__(self):
+        for _base in ScapyLibrary.__bases__:
+            _base.__init__(self)
+
+    # def __getattr__(self, item):
+    #     return super(ScapyLibrary, self).__getattr__(item)
 
     def get_keyword_names(self):
         keywords = []

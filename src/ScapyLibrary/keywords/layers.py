@@ -35,7 +35,7 @@ class LayersWrapper(object):
             else:
                 raise KeyError('Could not find %s' % name)
         except KeyError:
-            raise AttributeError
+            return super(LayersWrapper, self).__getattr__(name)
 
     def compose_packet(self, *layers):
         '''Create packet with layers
