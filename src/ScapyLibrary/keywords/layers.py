@@ -75,15 +75,18 @@ class LayersWrapper(object):
     def _init_layers(self):
         for protocol in scapylib.conf.layers:
             protocolName = protocol.__name__
-            if protocol.name is None:
+            if protocol._name is None:
                 doc = ''
             else:
-                doc = protocol.name + '\n\n'
+                doc = protocol._name + '\n\n'
             for field in protocol.fields_desc:
                 if hasattr(field, 'default'):
-                    doc += '@%s:    %s. Default value is %s\n\n' % (field.name,
+                    try:
+                        doc += '@%s:    %s. Default value is %s\n\n' % (field.name,
                                                                     field.__class__.__name__,
                                                                     str(field.default))
+                    except Exception, err:
+                        print '*WARN* temp solution'
                 else:
                     doc += '@%s:    %s\n\n' % (field.name, field.__class__.__name__)
             protocol.__doc__ = doc
