@@ -4,7 +4,7 @@ Created on 2015/12/10
 Author: by wang_yang1980@hotmail.com
 '''
 
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 from os.path import abspath, dirname, join
 execfile(join(dirname(abspath(__file__)), 'src', 'ScapyLibrary', 'version.py'))
@@ -33,7 +33,7 @@ setup(name         = 'robotframework-ScapyLibrary',
       platforms    = 'any',
       classifiers  = CLASSIFIERS.splitlines(),
       package_dir  = {'' : 'src'},
-      packages     = ['ScapyLibrary', 'ScapyLibrary.keywords', 'ScapyLibrary.utils'],
+      packages     = find_packages('src'),
       install_requires = [
 							'scapy>=2.3.2',
 						 ],
