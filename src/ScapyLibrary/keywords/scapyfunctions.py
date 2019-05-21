@@ -3,9 +3,9 @@ Created on 2016/6/12
 
 Author: by wang_yang1980@hotmail.com
 '''
-
 import types
 from ScapyLibrary.utils._scapy import scapylib
+
 
 class ScapyFunctionWrapper(object):
 
@@ -27,6 +27,7 @@ class ScapyFunctionWrapper(object):
 
     def get_keyword_names(self):
         return self.keywords.keys()
+
 
 if __name__ == '__main__':
     s = ScapyFunctionWrapper()

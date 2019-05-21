@@ -3,11 +3,11 @@ Created on 2015/12/10
 
 Author: by wang_yang1980@hotmail.com
 '''
-
 from setuptools import setup, find_packages
 
 from os.path import abspath, dirname, join
-execfile(join(dirname(abspath(__file__)), 'src', 'ScapyLibrary', 'version.py'))
+with open(join(dirname(abspath(__file__)), 'src', 'ScapyLibrary', 'version.py')) as f:
+      exec(f.read())
 
 
 DESCRIPTION = """

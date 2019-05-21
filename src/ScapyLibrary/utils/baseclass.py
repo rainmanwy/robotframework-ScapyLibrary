@@ -5,6 +5,7 @@ Author: by wang_yang1980@hotmail.com
 '''
 import types
 
+
 class _BaseClass(object):
 
     def get_keyword_names(self):

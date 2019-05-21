@@ -18,7 +18,7 @@ class PcapFile(_BaseClass):
         '''
         count = int(count)
         packetList = scapylib.rdpcap(pcapFile, count)
-        print '*DEBUG* Read %s' % packetList.__repr__()
+        print('*DEBUG* Read %s' % packetList.__repr__())
         return packetList
 
     def save_to_pcap_file(self, pcapFile, packetList, *args, **kargs):
@@ -30,4 +30,4 @@ class PcapFile(_BaseClass):
         '''
         pcapFile = os.path.abspath(pcapFile)
         scapylib.wrpcap(pcapFile, packetList, *args, **kargs)
-        print '*DEBUG* Save to %s' % pcapFile
+        print('*DEBUG* Save to %s' % pcapFile)

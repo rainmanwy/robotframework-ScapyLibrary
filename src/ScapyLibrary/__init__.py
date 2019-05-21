@@ -31,4 +31,4 @@ class ScapyLibrary(SendRecv, ScapyFunctionWrapper, LayersWrapper, PcapFile):
 
 if __name__ == '__main__':
     s = ScapyLibrary()
-    print s.get_keyword_names()
+    print(s.get_keyword_names())

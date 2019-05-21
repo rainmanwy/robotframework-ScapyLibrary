@@ -3,9 +3,9 @@ Created on 2016/3/14
 
 Author: by wang_yang1980@hotmail.com
 '''
-
 from ScapyLibrary.utils.baseclass import _BaseClass
 from ScapyLibrary.utils._scapy import scapylib
+
 
 class SendRecv(_BaseClass):
 
@@ -104,5 +104,3 @@ class SendRecv(_BaseClass):
             return answered
         elif (not returnAnswer) and return_unanswer:
             return unan
-
-

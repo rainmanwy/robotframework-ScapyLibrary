@@ -3,7 +3,6 @@ Created on 2016/2/23
 
 Author: by wang_yang1980@hotmail.com
 '''
-
 import types
 from ScapyLibrary.utils._scapy import scapylib
 
@@ -20,7 +19,7 @@ class LayersWrapper(object):
         def _f(self, **kwargs):
             newKwargs = {}
             for key in kwargs:
-                if isinstance(kwargs[key], basestring):
+                if isinstance(kwargs[key], str):
                     newKwargs[key] = str(kwargs[key])
                 else:
                     newKwargs[key] = kwargs[key]
@@ -66,11 +65,11 @@ class LayersWrapper(object):
         index = 0
         for packet in packets:
             index += 1
-            print '****** Content of packet %s********' % str(index)
+            print('****** Content of packet %s********' % str(index))
             packet.show()
 
     def get_keyword_names(self):
-        return self.layers.keys() + LayersWrapper.OTHER_KEYWORDS
+        return list(self.layers.keys()) + LayersWrapper.OTHER_KEYWORDS
 
     def _init_layers(self):
         for protocol in scapylib.conf.layers:
@@ -85,8 +84,8 @@ class LayersWrapper(object):
                         doc += '@%s:    %s. Default value is %s\n\n' % (field.name,
                                                                     field.__class__.__name__,
                                                                     str(field.default))
-                    except Exception, err:
-                        print '*WARN* temp solution'
+                    except Exception as err:
+                        print('*DEBUG* temp solution')
                 else:
                     doc += '@%s:    %s\n\n' % (field.name, field.__class__.__name__)
             protocol.__doc__ = doc
