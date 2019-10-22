@@ -103,7 +103,7 @@ def generate_scapy_layer_doc(docFile):
 
     with open(docFile, 'w+') as f:
         f.write(protocolDoc)
-    print "Generate layer doc to %s" % os.path.abspath(docFile)
+    print("Generate layer doc to %s" % os.path.abspath(docFile))
 
 if __name__ == '__main__':
     import sys
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     Example: python -m ScapyLibrary.layerDoc scapy.html
     '''
     if len(sys.argv)==1 or len(sys.argv)>1 and (sys.argv[1].lower() in ['help', '-h', '--help']):
-        print helpDoc
+        print(helpDoc)
     else:
         generate_scapy_layer_doc(sys.argv[1])
 

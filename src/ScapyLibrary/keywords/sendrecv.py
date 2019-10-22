@@ -1,8 +1,8 @@
-'''
+"""
 Created on 2016/3/14
 
 Author: by wang_yang1980@hotmail.com
-'''
+"""
 from ScapyLibrary.utils.baseclass import _BaseClass
 from ScapyLibrary.utils._scapy import scapylib
 
@@ -37,7 +37,7 @@ class SendRecv(_BaseClass):
 
         '''
         an, unan = scapylib.sr(packet, *args, **kwargs)
-        answered = scapylib.plist.PacketList(name='Answered')
+        answered = scapylib.PacketList(name='Answered')
         returnAnswer = True
         if return_answer and return_send:
             answered = an
@@ -85,7 +85,7 @@ class SendRecv(_BaseClass):
 
         '''
         an, unan = scapylib.srp(packet, *args, **kwargs)
-        answered = scapylib.plist.PacketList(name='Answered')
+        answered = scapylib.PacketList(name='Answered')
         returnAnswer = True
         if return_answer and return_send:
             answered = an
